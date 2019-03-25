@@ -1,24 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { getRandomString } from 'selenium-webdriver/safari';
+import {MemoObject, MemoryData} from "../memory-data"
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
+
+
+
+
+
 export class MainComponent implements OnInit {
 
   constructor() { }
 
   public Data={
-    displayData : "123"
+    displayData : "点击开始"
   }
 
   ngOnInit() {
   }
 
 
+
+
   private Mdata:string[] = ["あ","い","う","え","お","ア","イ","ウ","エ","オ"]
+
+
+  loadMdatas(){
+
+  }
+
+
 
   getRandomMdata(){
     
