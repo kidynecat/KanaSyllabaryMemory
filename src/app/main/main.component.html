@@ -1,6 +1,15 @@
-<p style="font-size :5em;text-align: center">
+
+
+<p style="font-size :5em;text-align: center;margin-top: 300px">
   {{Data.displayData}}
 </p>
+
+<p *ngIf="!isShowRemind && Data.remind != ''"  style="font-size :2em;text-align: center;">
+  <a  (click)="showRemind()">查看提示</a>
+</p>
+
+
+<p *ngIf="isShowRemind" style="font-size :2em;text-align: center;">{{Data.remind}}</p>
 
 
 <button style="width: 200px;margin:0 auto;display:block;" nz-button nzType="primary" (click)="getRandomMdata()">点我</button>

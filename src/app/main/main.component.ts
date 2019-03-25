@@ -17,32 +17,45 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   public Data={
-    displayData : "点击开始"
+    displayData : "点击开始",
+    remind: ""
   }
+
+  public isShowRemind = false
 
   ngOnInit() {
+    this.loadMdatas()
   }
 
 
 
 
-  private Mdata:string[] = ["あ","い","う","え","お","ア","イ","ウ","エ","オ"]
+  private Mdata:Array<MemoObject> =[]
 
 
   loadMdatas(){
+    let md = new MemoryData()
+    this.Mdata = md.getJP50()
+  }
 
+  showRemind(){
+    this.isShowRemind = true
   }
 
 
 
   getRandomMdata(){
     
+    this.isShowRemind = false
     let Range = this.Mdata.length-1;  
     let Rand = Math.random();  
     let num = Math.round(Rand * Range)
     console.log(num)
-    if(this.Data.displayData != this.Mdata[num])
-    this.Data.displayData = this.Mdata[num]  
+    if(this.Data.displayData != this.Mdata[num].DisplayText){
+      this.Data.displayData = this.Mdata[num].DisplayText
+      this.Data.remind = this.Mdata[num].Remind
+    }
+     
     else
     this.getRandomMdata()
   }
