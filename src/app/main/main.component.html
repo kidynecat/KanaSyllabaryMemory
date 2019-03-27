@@ -15,12 +15,9 @@
   <a  (click)="showRemind()">查看提示</a>
 </div>
 
-
 <div *ngIf="isShowRemind" style="font-size :1.5em;text-align: center;">{{Data.remind}}</div>
 
-
 <button style="width: 200px;margin:50px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
-
 
 <nz-drawer
 [nzClosable]="true"

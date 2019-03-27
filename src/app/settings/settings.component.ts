@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-import {MemoObject, MemoryData} from "../memory-data"
+import { MemoObject, MemoryData } from "../memory-data"
 import { fromEvent } from 'rxjs';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -20,36 +20,34 @@ export class SettingsComponent implements OnInit {
 
   }
 
-  selectAll(){
-    for(let i = 0 ; i < this.memoObjects.length ; i ++)
-       {
-         
-          this.memoObjects[i].Selected = true
-       }
+  selectAll() {
+    for (let i = 0; i < this.memoObjects.length; i++) {
+
+      this.memoObjects[i].Selected = true
+    }
   }
 
-  unselectAll(){
-    for(let i = 0 ; i < this.memoObjects.length ; i ++)
-       {
-         
-          this.memoObjects[i].Selected = false
-       }
+  unselectAll() {
+    for (let i = 0; i < this.memoObjects.length; i++) {
+
+      this.memoObjects[i].Selected = false
+    }
   }
 
-  public getMarginLeft(mb:MemoObject):string{
-    switch(mb.DisplayText){
-      case 'ゆ' :
-      return '59px'
-      break;
-      case  'よ':
-      return '59px'
-      break;
-      case  'を':
-      return '177px'
-      break;
-      
+  public getMarginLeft(mb: MemoObject): string {
+    switch (mb.DisplayText) {
+      case 'ゆ':
+        return '59px'
+        break;
+      case 'よ':
+        return '59px'
+        break;
+      case 'を':
+        return '176px'
+        break;
+
       default:
-      return '1px'
+        return '1px'
 
 
     }
@@ -71,8 +69,10 @@ export class SettingsComponent implements OnInit {
     touchstart.subscribe((evt: TouchEvent) => {
       // Log coords of mouse movements
       //console.log(`down了`);
-      this.mouseDownFlag = true
-
+      let ele = document.elementFromPoint(evt.touches[0].clientX, evt.touches[0].clientY);
+      if (ele != null && ele.className == "memoObjects") {
+        this.mouseDownFlag = true
+      }
     })
 
     let mouseUp = fromEvent(window, 'mouseup');
@@ -85,8 +85,8 @@ export class SettingsComponent implements OnInit {
 
     })
 
-    let touchend  = fromEvent(window, 'touchend');
-    touchend .subscribe((evt: TouchEvent) => {
+    let touchend = fromEvent(window, 'touchend');
+    touchend.subscribe((evt: TouchEvent) => {
       // Log coords of mouse movements
       //console.log(`touchend`);
       this.mouseDownFlag = false
@@ -94,24 +94,31 @@ export class SettingsComponent implements OnInit {
     })
 
 
+    window.addEventListener('touchmove',  e => {
+      if (this.mouseDownFlag == true)
+      {
+       e.preventDefault()
+      }
+    }, { passive: false })
+
+
     let touchmove = fromEvent(window, 'touchmove')
     touchmove.subscribe((evt: TouchEvent) => {
-      // Log coords of mouse movements
-      let ele=document.elementFromPoint(evt.touches[0].clientX, evt.touches[0].clientY);
+      if (this.mouseDownFlag == true) {
+        // Log coords of mouse movements
+        let ele = document.elementFromPoint(evt.touches[0].clientX, evt.touches[0].clientY);
 
-      //console.log(ele)
-      if(ele != null && ele.id != this.lastTouchID)
-      {
-        this.lastTouchID = ele.id
-        for(let i = 0 ; i < this.memoObjects.length ; i ++)
-        {
-          if(this.memoObjects[i].DisplayText == ele.id)
-          {
-           this.memoObjects[i].Selected = !this.memoObjects[i].Selected 
+        //console.log(ele)
+        if (ele != null && ele.id != this.lastTouchID) {
+          this.lastTouchID = ele.id
+          for (let i = 0; i < this.memoObjects.length; i++) {
+            if (this.memoObjects[i].DisplayText == ele.id) {
+              this.memoObjects[i].Selected = !this.memoObjects[i].Selected
+            }
           }
         }
       }
-      
+
     })
 
     let divmemoObjects = document.getElementsByClassName('memoObjects')
@@ -120,40 +127,36 @@ export class SettingsComponent implements OnInit {
     dmemoObjectsdown.subscribe((evt: MouseEvent) => {
       // Log coords of mouse movements
 
-        //console.log(evt.toElement.id)
-       for(let i = 0 ; i < this.memoObjects.length ; i ++)
-       {
-         if(this.memoObjects[i].DisplayText == evt.toElement.id)
-         {
-          this.memoObjects[i].Selected = !this.memoObjects[i].Selected 
-         }
-       }
-      })
-      
+      //console.log(evt.toElement.id)
+      for (let i = 0; i < this.memoObjects.length; i++) {
+        if (this.memoObjects[i].DisplayText == evt.toElement.id) {
+          this.memoObjects[i].Selected = !this.memoObjects[i].Selected
+        }
+      }
+    })
+
 
 
     let mouseenter = fromEvent(divmemoObjects, 'mouseenter')
     mouseenter.subscribe((evt: MouseEvent) => {
       // Log coords of mouse movements
 
-      if(this.mouseDownFlag == true){
+      if (this.mouseDownFlag == true) {
         //console.log(evt.toElement.id)
-       for(let i = 0 ; i < this.memoObjects.length ; i ++)
-       {
-         if(this.memoObjects[i].DisplayText == evt.toElement.id)
-         {
-          this.memoObjects[i].Selected = !this.memoObjects[i].Selected 
-         }
-       }
+        for (let i = 0; i < this.memoObjects.length; i++) {
+          if (this.memoObjects[i].DisplayText == evt.toElement.id) {
+            this.memoObjects[i].Selected = !this.memoObjects[i].Selected
+          }
+        }
       }
-      
+
 
     })
 
 
 
 
-    
+
   }
 
 }
