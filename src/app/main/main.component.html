@@ -1,15 +1,34 @@
 
 
-<p style="font-size :5em;text-align: center;margin-top: 300px">
+<div style="margin: 15px 17px 0 0;float: right">
+  <button nz-button nzSize="small" nzType="primary" nzShape="circle" (click)="openDrawer()"><i nz-icon type="setting" theme="outline" ></i></button>
+</div>
+
+<div style="clear:both"></div>
+<div style="font-size :4.5em;text-align: center;margin-top: 100px">
   {{Data.displayData}}
-</p>
+</div>
 
-<p *ngIf="!isShowRemind && Data.remind != ''"  style="font-size :2em;text-align: center;">
+<br>
+<br>
+<div *ngIf="!isShowRemind && Data.remind != ''"  style="font-size :1.5em;text-align: center;">
   <a  (click)="showRemind()">查看提示</a>
-</p>
+</div>
 
 
-<p *ngIf="isShowRemind" style="font-size :2em;text-align: center;">{{Data.remind}}</p>
+<div *ngIf="isShowRemind" style="font-size :1.5em;text-align: center;">{{Data.remind}}</div>
 
 
-<button style="width: 200px;margin:0 auto;display:block;" nz-button nzType="primary" (click)="getRandomMdata()">点我</button>
+<button style="width: 200px;margin:50px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
+
+
+<nz-drawer
+[nzClosable]="true"
+[nzVisible]="Data.drawerVisible"
+[nzWidth]="350"
+nzPlacement="right"
+nzTitle="设置"
+(nzOnClose)="closeDrawer()"
+>
+  <app-settings [memoObjects] = "Mdata"></app-settings>
+</nz-drawer>

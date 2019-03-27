@@ -1,0 +1,16 @@
+<div id="divSetting">
+  <button nz-button nzSize="small"  nzType="primary" (click)="selectAll()">全选</button> &nbsp; <button nz-button nzSize="small" nzType="default" (click)="unselectAll()">清空</button>
+  <div style="clear:both;margin-bottom: 20px"></div>
+
+  <div class="memoObjects" *ngFor="let mb of memoObjects" 
+  style="width: 57px;float:left;text-align: center;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; " 
+  [style.margin-left] = "getMarginLeft(mb)" 
+  [style.border-color] = "mb.Selected? 'rgb(24,144,255)':'gray'" 
+  [style.background-color] = "mb.Selected? 'rgb(24,144,255)':'white'" 
+  [style.color] = "mb.Selected? 'white':'gray'" 
+  id = "{{mb.DisplayText}}"
+  >
+    {{mb.DisplayText}}
+  </div>
+</div>
+

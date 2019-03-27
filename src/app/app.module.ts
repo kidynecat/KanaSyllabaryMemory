@@ -13,13 +13,15 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 	
 
 import zh from '@angular/common/locales/zh';
+import { SettingsComponent } from './settings/settings.component';
 
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
