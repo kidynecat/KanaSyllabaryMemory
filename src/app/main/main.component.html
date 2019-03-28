@@ -1,10 +1,21 @@
 
 
-<div style="margin: 15px 17px 0 0;float: right">
-  <button nz-button nzSize="small" nzType="primary" nzShape="circle" (click)="openDrawer()"><i nz-icon type="setting" theme="outline" ></i></button>
+<div style="margin: 14px 15px 0 0;float: right">
+  <button nz-button  nzType="primary" nzShape="circle" (click)="openDrawer()"><i nz-icon type="setting" theme="outline" ></i></button>
 </div>
 
 <div style="clear:both"></div>
+
+<div id ="startdiv" *ngIf="!IsStart"  >
+
+  <button nzSize="large" style="width: 230px;height:70px;line-height: 70px;margin:250px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="start()">开始练习</button>
+
+</div>
+
+
+
+
+<div id="miandiv" *ngIf="IsStart" >
 <div style="font-size :4.5em;text-align: center;margin-top: 100px">
   {{Data.displayData}}
 </div>
@@ -17,9 +28,10 @@
 
 <div *ngIf="isShowRemind" style="font-size :1.5em;text-align: center;">{{Data.remind}}</div>
 
-<button style="width: 200px;margin:50px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
-
+<button nzSize="large" style="width: 200px;margin:50px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
+</div>
 <nz-drawer
+[nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
 [nzClosable]="true"
 [nzVisible]="Data.drawerVisible"
 [nzWidth]="350"
@@ -27,5 +39,5 @@ nzPlacement="right"
 nzTitle="设置"
 (nzOnClose)="closeDrawer()"
 >
-  <app-settings [memoObjects] = "Mdata"></app-settings>
+  <app-settings [memoObjects] = "Mdata" [displayType] = "DisplayType" (changeDisplayText)="changeDisplayText($event)" ></app-settings>
 </nz-drawer>

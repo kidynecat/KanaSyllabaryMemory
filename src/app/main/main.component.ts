@@ -36,6 +36,12 @@ export class MainComponent implements OnInit {
 
   public DisplayMdata:Array<MemoObject> = []
 
+  public DisplayType = "A";
+
+  public IsStart = false
+
+
+
 
   loadMdatas(){
     let md = new MemoryData()
@@ -47,6 +53,16 @@ export class MainComponent implements OnInit {
     this.isShowRemind = true
   }
 
+  changeDisplayText(e){
+    console.log(e)
+    this.DisplayType = e
+  }
+
+  start(){
+    this.getRandomMdata()
+    this.IsStart = true
+  }
+
   getRandomMdata(){
 
     //console.log(this.DisplayMdata)
@@ -54,14 +70,34 @@ export class MainComponent implements OnInit {
     let Range = this.DisplayMdata.length-1;  
     let Rand = Math.random();  
     let num = Math.round(Rand * Range)
+
+
+    let tmpdisplay = ""
+    if(this.DisplayType == "A" )
+    { 
+      let Rand2 = Math.random();  
+      let r2 =Math.round(Rand2 * 1)
+      console.log(r2)
+      tmpdisplay = (r2 == 1 ? this.DisplayMdata[num].DisplayText : this.DisplayMdata[num].DisplayText2)
+    }
+    else if(this.DisplayType == "Ping")
+    {
+      tmpdisplay = this.DisplayMdata[num].DisplayText
+    }
+    else if(this.DisplayType == "Pian")
+    {
+      tmpdisplay = this.DisplayMdata[num].DisplayText2
+    }
+
     
-    if(this.Data.displayData != this.DisplayMdata[num].DisplayText){
-      this.Data.displayData = this.DisplayMdata[num].DisplayText
+    if (this.Data.displayData != tmpdisplay){
+      this.Data.displayData = tmpdisplay
       this.Data.remind = this.DisplayMdata[num].Remind
     }
-     
-    else
-    this.getRandomMdata()
+    else if(this.DisplayMdata.length > 1)
+    {
+      this.getRandomMdata()
+    }
   }
 
   openDrawer(){
