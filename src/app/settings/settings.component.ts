@@ -44,13 +44,13 @@ export class SettingsComponent implements OnInit {
   public getMarginLeft(mb: MemoObject): string {
     switch (mb.DisplayText) {
       case 'ゆ':
-        return '59px'
+        return '57px'
         break;
       case 'よ':
-        return '59px'
+        return '57px'
         break;
       case 'を':
-        return '176px'
+        return '170px'
         break;
 
       default:

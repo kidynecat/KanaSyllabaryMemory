@@ -1,8 +1,8 @@
 <div id="divSetting" style="height:500px" #target>
 
   <div style="background-color:white;position: fixed;height: 60px;line-height: 60px;z-index: 9999;top:55px;" >
-      <nz-radio-group [(ngModel)]="displayType"> 
-    <label nz-radio nzValue="A">All</label>
+      <nz-radio-group [(ngModel)]="displayType" (ngModelChange)="ondisplayType()"> 
+    <label nz-radio nzValue="A">平/片</label>
       <label nz-radio nzValue="Ping">平假名</label>
       <label nz-radio nzValue="Pian">片假名</label>
       <label nz-radio nzValue="luo">罗马字</label>
@@ -27,7 +27,7 @@
   <div style="clear:both;margin-bottom: 10px"></div>
 
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,0)" 
-  style="width: 57px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
+  style="width: 55px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
   [style.margin-left] = "getMarginLeft(mb)" 
   [style.border-color] = "mb.Selected? 'rgb(24,144,255)':'gray'" 
   [style.background-color] = "mb.Selected? 'rgb(24,144,255)':'white'" 
@@ -50,7 +50,7 @@
   <div style="clear:both;margin-bottom: 10px"></div>
 
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,1)" 
-  style="width: 57px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
+  style="width: 55px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
   [style.margin-left] = "getMarginLeft(mb)" 
   [style.border-color] = "mb.Selected? 'rgb(24,144,255)':'gray'" 
   [style.background-color] = "mb.Selected? 'rgb(24,144,255)':'white'" 
@@ -74,7 +74,7 @@
 
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,2)" 
   style="width: 85px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
-  [style.margin-right] = "'14px'" 
+  [style.margin-right] = "'12px'" 
   [style.border-color] = "mb.Selected? 'rgb(24,144,255)':'gray'" 
   [style.background-color] = "mb.Selected? 'rgb(24,144,255)':'white'" 
   [style.color] = "mb.Selected? 'white':'gray'" 
