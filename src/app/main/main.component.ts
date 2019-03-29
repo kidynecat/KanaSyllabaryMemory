@@ -73,26 +73,34 @@ export class MainComponent implements OnInit {
 
 
     let tmpdisplay = ""
+    let tmpremind =""
     if(this.DisplayType == "A" )
     { 
       let Rand2 = Math.random();  
       let r2 =Math.round(Rand2 * 1)
       console.log(r2)
       tmpdisplay = (r2 == 1 ? this.DisplayMdata[num].DisplayText : this.DisplayMdata[num].DisplayText2)
+      tmpremind = this.DisplayMdata[num].Remind
     }
     else if(this.DisplayType == "Ping")
     {
       tmpdisplay = this.DisplayMdata[num].DisplayText
+      tmpremind = this.DisplayMdata[num].Remind
     }
     else if(this.DisplayType == "Pian")
     {
       tmpdisplay = this.DisplayMdata[num].DisplayText2
+      tmpremind = this.DisplayMdata[num].Remind
     }
-
+    else if(this.DisplayType == "luo")
+    {
+      tmpdisplay =this.DisplayMdata[num].Remind
+      tmpremind = this.DisplayMdata[num].DisplayText + "/" + this.DisplayMdata[num].DisplayText2
+    }
     
     if (this.Data.displayData != tmpdisplay){
       this.Data.displayData = tmpdisplay
-      this.Data.remind = this.DisplayMdata[num].Remind
+      this.Data.remind = tmpremind
     }
     else if(this.DisplayMdata.length > 1)
     {
@@ -115,6 +123,10 @@ export class MainComponent implements OnInit {
     }
 
     this.Data.drawerVisible = false;
+  }
+
+  goGitHub(){
+    window.location.href = "https://github.com/kidynecat/KanaSyllabaryMemory"
   }
   
 }

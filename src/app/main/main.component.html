@@ -1,14 +1,17 @@
 
 
-<div style="margin: 14px 15px 0 0;float: right">
+<div style="margin: 12px 12px 0 0;float: right">
   <button nz-button  nzType="primary" nzShape="circle" (click)="openDrawer()"><i nz-icon type="setting" theme="outline" ></i></button>
+</div>
+<div style="margin: 12px 12px 0 0;float: right">
+  <button nz-button style="font-size: 2em;line-height: 27px"  nzType="primary" nzShape="circle" (click)="goGitHub()"><i nz-icon nzType="github" nzTheme="outline"></i></button>
 </div>
 
 <div style="clear:both"></div>
 
 <div id ="startdiv" *ngIf="!IsStart"  >
 
-  <button nzSize="large" style="width: 230px;height:70px;line-height: 70px;margin:250px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="start()">开始练习</button>
+  <button nzSize="large" style="width: 230px;height:70px;line-height: 70px;margin:170px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="start()">开始练习</button>
 
 </div>
 
@@ -16,7 +19,7 @@
 
 
 <div id="miandiv" *ngIf="IsStart" >
-<div style="font-size :4.5em;text-align: center;margin-top: 100px">
+<div style="font-size :4.5em;text-align: center;margin-top: 40px">
   {{Data.displayData}}
 </div>
 
@@ -34,7 +37,7 @@
 [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
 [nzClosable]="true"
 [nzVisible]="Data.drawerVisible"
-[nzWidth]="350"
+[nzWidth]="360"
 nzPlacement="right"
 nzTitle="设置"
 (nzOnClose)="closeDrawer()"

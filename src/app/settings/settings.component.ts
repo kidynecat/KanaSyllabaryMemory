@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { MemoObject, MemoryData } from "../memory-data"
+import { MemoObject, MemoryData,FYType } from "../memory-data"
 import { fromEvent } from 'rxjs';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -25,17 +25,19 @@ export class SettingsComponent implements OnInit {
 
   }
 
-  selectAll() {
-    for (let i = 0; i < this.memoObjects.length; i++) {
 
-      this.memoObjects[i].Selected = true
+
+  selectAll(fyType:FYType) {
+    for (let i = 0; i < this.memoObjects.length; i++) {
+      if(this.memoObjects[i].FYType == fyType)
+        this.memoObjects[i].Selected = true
     }
   }
 
-  unselectAll() {
+  unselectAll(fyType:FYType) {
     for (let i = 0; i < this.memoObjects.length; i++) {
-
-      this.memoObjects[i].Selected = false
+      if(this.memoObjects[i].FYType == fyType)
+        this.memoObjects[i].Selected = false
     }
   }
 
@@ -69,7 +71,32 @@ export class SettingsComponent implements OnInit {
     else if(this.displayType =="Pian"){
       return mb.DisplayText2
     }
-    
+    else if(this.displayType =="luo"){
+      return mb.Remind
+    }
+  }
+
+
+  getRemindText(mb: MemoObject):string
+  {
+    if(this.displayType =="luo"){
+      return  mb.DisplayText + "/" + mb.DisplayText2
+    }
+    else
+    {
+      return mb.Remind
+    }
+  }
+
+  getFYTypeObjects(mb:Array<MemoObject>,fyType:FYType):Array<MemoObject>{
+    let result:Array<MemoObject> = []
+    mb.forEach((o,i,m) =>{
+      if(o.FYType == fyType)
+      {
+        result.push(o)
+      }
+    })
+    return result
   }
 
   ondisplayType(){
