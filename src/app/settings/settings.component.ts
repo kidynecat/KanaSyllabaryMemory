@@ -100,7 +100,7 @@ export class SettingsComponent implements OnInit {
   }
 
   ondisplayType(){
-    console.log(this.displayType)
+    //console.log(this.displayType)
     this.changeDisplayText.emit(this.displayType)
   }
 

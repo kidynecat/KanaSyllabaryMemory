@@ -4,7 +4,7 @@
   <button nz-button  nzType="primary" nzShape="circle" (click)="openDrawer()"><i nz-icon type="setting" theme="outline" ></i></button>
 </div>
 <div style="margin: 12px 12px 0 0;float: right">
-  <button nz-button style="font-size: 28px;line-height: 27px"  nzType="primary" nzShape="circle" (click)="goGitHub()"><i nz-icon nzType="github" nzTheme="outline"></i></button>
+  <button nz-button  nzType="primary" nzShape="circle" (click)="goGitHub()"><i nz-icon nzType="github" nzTheme="outline"></i></button>
 </div>
 
 <div style="clear:both"></div>
@@ -35,6 +35,8 @@
 
 <button nzSize="large" style="width: 200px;margin:30px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
 </div>
+
+
 <nz-drawer
 [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
 [nzClosable]="true"

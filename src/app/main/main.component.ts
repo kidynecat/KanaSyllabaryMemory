@@ -47,7 +47,14 @@ export class MainComponent implements OnInit {
   loadMdatas(){
     let md = new MemoryData()
     this.Mdata = md.getJP50()
-    this.DisplayMdata =  this.Mdata
+
+    this. DisplayMdata  = []
+    for(let i = 0 ; i < this.Mdata.length ; i ++){
+      if(this.Mdata[i].Selected == true)
+      {
+        this.DisplayMdata.push(this.Mdata[i])
+      }
+    }
   }
 
   showRemind(){
