@@ -4,10 +4,11 @@
     可访问 https://kidynecat.github.io/KanaSyllabaryMemory 直接使用
 
 # 更新日志
+    v1.1
+    加入发音功能，发音质量一般 
 
     v1.0.1 
-    bug fix 
-    设置界面流出更多可滚动空间
+    bug fix：设置界面流出更多可滚动空间
 
     v1.0
     添加浊音，拗音

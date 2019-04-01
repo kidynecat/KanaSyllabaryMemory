@@ -18,6 +18,7 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   public Data={
+    id:"",
     displayData : "开始",
     remind: "",
     drawerVisible:false
@@ -72,13 +73,17 @@ export class MainComponent implements OnInit {
     let num = Math.round(Rand * Range)
 
 
+    
     let tmpdisplay = ""
     let tmpremind =""
+
+    this.Data.id = this.DisplayMdata[num].ID
+
     if(this.DisplayType == "A" )
     { 
       let Rand2 = Math.random();  
       let r2 =Math.round(Rand2 * 1)
-      console.log(r2)
+      //console.log(r2)
       tmpdisplay = (r2 == 1 ? this.DisplayMdata[num].DisplayText : this.DisplayMdata[num].DisplayText2)
       tmpremind = this.DisplayMdata[num].Remind
     }
@@ -127,6 +132,14 @@ export class MainComponent implements OnInit {
 
   goGitHub(){
     window.location.href = "https://github.com/kidynecat/KanaSyllabaryMemory"
+  }
+
+  playsound(id:string){
+    let sound :HTMLAudioElement
+    sound = <HTMLAudioElement>(document.getElementById("ddsound"));
+    sound.loop = false
+    sound.src = `assets/${id}.mp3`
+    sound.play()
   }
   
 }

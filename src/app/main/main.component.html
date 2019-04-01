@@ -23,15 +23,17 @@
   {{Data.displayData}}
 </div>
 
-<br>
-<br>
-<div *ngIf="!isShowRemind && Data.remind != ''"  style="font-size :1.5em;text-align: center;">
-  <a  (click)="showRemind()">查看提示</a>
+
+<audio  id='ddsound' src='' ></audio>
+<!-- <div  style="font-size :1.5em;text-align: center;margin-top: 24px">
+ 
+</div> -->
+<div *ngIf="!isShowRemind && Data.remind != ''"  style="font-size :1.5em;text-align: center;margin-top: 50px">
+  <a (click)="showRemind()">查看提示</a> 
 </div>
+<div *ngIf="isShowRemind" style="font-size :1.5em;text-align: center;margin-top: 50px">{{Data.remind}} &nbsp;  <a style="font-size:17px" (click)="playsound(Data.id)"><i nz-icon nzType="sound" nzTheme="outline"></i></a></div>
 
-<div *ngIf="isShowRemind" style="font-size :1.5em;text-align: center;">{{Data.remind}}</div>
-
-<button nzSize="large" style="width: 200px;margin:50px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
+<button nzSize="large" style="width: 200px;margin:30px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
 </div>
 <nz-drawer
 [nzBodyStyle]="{ height: 'calc(100% - 55px)', overflow: 'auto', 'padding-bottom': '53px' }"
