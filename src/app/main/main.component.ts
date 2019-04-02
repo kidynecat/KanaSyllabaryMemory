@@ -107,7 +107,15 @@ export class MainComponent implements OnInit {
     else if(this.DisplayType == "luo")
     {
       tmpdisplay =this.DisplayMdata[num].Remind
-      tmpremind = this.DisplayMdata[num].DisplayText + "/" + this.DisplayMdata[num].DisplayText2
+      tmpremind = this.DisplayMdata[num].DisplayText + "  " + this.DisplayMdata[num].DisplayText2
+    }
+    else if(this.DisplayType == "swap")
+    {
+      let Rand2 = Math.random();  
+      let r2 =Math.round(Rand2 * 1)
+      //console.log(r2)
+      tmpdisplay = (r2 == 1 ? this.DisplayMdata[num].DisplayText : this.DisplayMdata[num].DisplayText2)
+      tmpremind = (r2 == 1 ? this.DisplayMdata[num].DisplayText2 : this.DisplayMdata[num].DisplayText)
     }
     
     if (this.Data.displayData != tmpdisplay){

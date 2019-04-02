@@ -5,6 +5,11 @@
 可访问 [https://kidynecat.github.io/KanaSyllabaryMemory](https://kidynecat.github.io/KanaSyllabaryMemory) 直接使用
 
 ## 更新日志
+v1.2
+增加平假名片假名对应训练
+修改readme格式
+修复一个换行显示问题
+
 v1.1.1
 修复几个错误的读音
 浊音、拗音依旧改为默认不选

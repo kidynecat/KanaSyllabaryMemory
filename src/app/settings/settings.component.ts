@@ -17,15 +17,9 @@ export class SettingsComponent implements OnInit {
   public mouseDownFlag = false;
   public lastTouchID = "";
 
-  
-
 
   ngOnInit() {
-
-
   }
-
-
 
   selectAll(fyType:FYType) {
     for (let i = 0; i < this.memoObjects.length; i++) {
@@ -55,15 +49,13 @@ export class SettingsComponent implements OnInit {
 
       default:
         return '1px'
-
-
     }
   }
 
   getDisplayText(mb: MemoObject):string{
     let str = ""
     if(this.displayType == "A"){
-      return mb.DisplayText + "/" + mb.DisplayText2
+      return mb.DisplayText + "  " + mb.DisplayText2 
     }
     else if(this.displayType =="Ping"){
       return mb.DisplayText
@@ -74,13 +66,19 @@ export class SettingsComponent implements OnInit {
     else if(this.displayType =="luo"){
       return mb.Remind
     }
+    else if(this.displayType == "swap"){
+      return mb.DisplayText
+    }
   }
 
 
   getRemindText(mb: MemoObject):string
   {
     if(this.displayType =="luo"){
-      return  mb.DisplayText + "/" + mb.DisplayText2
+      return mb.DisplayText + "  " + mb.DisplayText2
+    }
+    else if(this.displayType == "swap"){
+      return mb.DisplayText2
     }
     else
     {
