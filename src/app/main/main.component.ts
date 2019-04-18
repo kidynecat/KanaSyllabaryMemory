@@ -37,6 +37,8 @@ export class MainComponent implements OnInit {
 
   public DisplayMdata:Array<MemoObject> = []
 
+  private usedDisplayMdata:Array<MemoObject> = []
+
   public DisplayType = "A";
 
   public IsStart = false
@@ -47,11 +49,14 @@ export class MainComponent implements OnInit {
   loadMdatas(){
     let md = new MemoryData()
     this.Mdata = md.getJP50()
+    this.reflashDisplayData();
+  }
 
-    this. DisplayMdata  = []
-    for(let i = 0 ; i < this.Mdata.length ; i ++){
-      if(this.Mdata[i].Selected == true)
-      {
+  private reflashDisplayData() {
+    this.DisplayMdata = [];
+    this.usedDisplayMdata = [];
+    for (let i = 0; i < this.Mdata.length; i++) {
+      if (this.Mdata[i].Selected == true) {
         this.DisplayMdata.push(this.Mdata[i])
       }
     }
@@ -69,6 +74,7 @@ export class MainComponent implements OnInit {
   start(){
     this.getRandomMdata()
     this.IsStart = true
+    
   }
 
   getRandomMdata(){
@@ -121,6 +127,17 @@ export class MainComponent implements OnInit {
     if (this.Data.displayData != tmpdisplay){
       this.Data.displayData = tmpdisplay
       this.Data.remind = tmpremind
+
+      if(this.DisplayMdata.length > 1){
+        var used = this.DisplayMdata.splice(num,1)
+        this.usedDisplayMdata = this.usedDisplayMdata.concat(used)
+      }
+      else
+      {
+        this.DisplayMdata = this.DisplayMdata.concat(this.usedDisplayMdata)
+        this.usedDisplayMdata = [] 
+      }
+
     }
     else if(this.DisplayMdata.length > 1)
     {
@@ -130,28 +147,22 @@ export class MainComponent implements OnInit {
 
   openDrawer(){
     // console.log("openDrawer")
-    this.Data.drawerVisible = true;
+    this.Data.drawerVisible = true
   }
 
   closeDrawer(){
-    this. DisplayMdata  = []
-    for(let i = 0 ; i < this.Mdata.length ; i ++){
-      if(this.Mdata[i].Selected == true)
-      {
-        this.DisplayMdata.push(this.Mdata[i])
-      }
-    }
+    this.reflashDisplayData()
 
-    this.Data.drawerVisible = false;
+    this.Data.drawerVisible = false
   }
 
   goGitHub(){
     window.location.href = "https://github.com/kidynecat/KanaSyllabaryMemory"
   }
 
-  playsound(id:string){
+  playSound(id:string){
     let sound :HTMLAudioElement
-    sound = <HTMLAudioElement>(document.getElementById("ddsound"));
+    sound = <HTMLAudioElement>(document.getElementById("ddsound"))
     sound.loop = false
     sound.src = `assets/${id}.mp3`
     sound.play()
