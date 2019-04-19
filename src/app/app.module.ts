@@ -14,6 +14,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import zh from '@angular/common/locales/zh';
 import { SettingsComponent } from './settings/settings.component';
+import { ColorPickerComponent } from './color-picker/color-picker.component';
 
 registerLocaleData(zh);
 
@@ -21,7 +22,8 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     MainComponent,
-    SettingsComponent
+    SettingsComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,

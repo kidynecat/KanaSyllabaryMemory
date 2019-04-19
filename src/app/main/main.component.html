@@ -4,14 +4,18 @@
   <button nz-button  nzType="primary" nzShape="circle" (click)="openDrawer()"><i nz-icon type="setting" theme="outline" ></i></button>
 </div>
 <div style="margin: 12px 12px 0 0;float: right">
+  <button nz-button  nzType="primary" nzShape="circle" (click)="colorPick()"><i nz-icon nzType="skin" nzTheme="outline"></i></button>
+</div>
+<div style="margin: 12px 12px 0 0;float: right">
   <button nz-button  nzType="primary" nzShape="circle" (click)="goGitHub()"><i nz-icon nzType="github" nzTheme="outline"></i></button>
 </div>
+
 
 <div style="clear:both"></div>
 
 <div id ="startdiv" *ngIf="!IsStart"  >
 
-  <button nzSize="large" style="font-size: 30px; width: 230px;height:70px;line-height: 70px;margin:170px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="start()">开始练习</button>
+  <button nzSize="large" nzType="primary" style="font-size: 30px; width: 230px;height:70px;line-height: 70px;margin:170px auto;display:block;"  [disabled]="DisplayMdata.length == 0" nz-button  (click)="start()">开始练习</button>
 
 </div>
 
@@ -19,7 +23,7 @@
 
 
 <div id="miandiv" *ngIf="IsStart" >
-<div style="font-size :4.5em;text-align: center;margin-top: 40px">
+<div style="font-size :4.5em;text-align: center;margin-top: 80px">
   {{Data.displayData}}
 </div>
 
@@ -33,7 +37,7 @@
 </div>
 <div *ngIf="isShowRemind" style="font-size :20px;text-align: center;margin-top: 75px">{{Data.remind}} &nbsp;  <a style="font-size:18px" (click)="playSound(Data.id)"><i nz-icon nzType="sound" nzTheme="outline"></i></a></div>
 
-<button nzSize="large" style="width: 200px;margin:35px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button nzType="primary" (click)="getRandomMdata()">下一个</button>
+<button nzSize="large" nzType="primary" style="width: 200px;margin:35px auto;display:block;" [disabled]="DisplayMdata.length == 0" nz-button (click)="getRandomMdata()">下一个</button>
 </div>
 
 

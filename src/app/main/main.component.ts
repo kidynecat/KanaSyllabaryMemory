@@ -6,7 +6,7 @@ import {MemoObject, MemoryData} from "../memory-data"
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.less']
 })
 
 
@@ -17,14 +17,19 @@ export class MainComponent implements OnInit {
 
   constructor() { }
 
+
+  public isDark = false
+
   public Data={
     id:"",
-    displayData : "开始",
+    displayData : "",
     remind: "",
-    drawerVisible:false
+    drawerVisible:false,
   }
 
   public isShowRemind = false
+
+
 
   ngOnInit() {
     this.loadMdatas()
@@ -85,8 +90,6 @@ export class MainComponent implements OnInit {
     let Rand = Math.random();  
     let num = Math.round(Rand * Range)
 
-
-    
     let tmpdisplay = ""
     let tmpremind =""
 
@@ -166,6 +169,22 @@ export class MainComponent implements OnInit {
     sound.loop = false
     sound.src = `assets/${id}.mp3`
     sound.play()
+  }
+
+  colorPick(){
+    if(!this.isDark)
+    {
+      document.body.className = "darkbackground"
+      document.body.style.setProperty('--primarcolor', '#7B7B7B');
+      this.isDark = true
+    }
+    else
+    {
+      document.body.className = ""
+      document.body.style.setProperty('--primarcolor', '#1890ff');
+      this.isDark = false
+    }
+    
   }
   
 }

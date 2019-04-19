@@ -1,8 +1,8 @@
-<div id="divSetting" style="height:500px" #target>
+<div id="divSetting" style="height:500px;position: relative;" #target>
 
-  <div style="background-color:white;position: fixed;height: 60px;line-height: 60px;z-index: 9999;top:55px;" >
+  <div style="background-color:white;position: fixed;height: 60px;line-height: 60px;z-index: 9999;top:55px;width: 100%" >
       <nz-radio-group [(ngModel)]="displayType" (ngModelChange)="ondisplayType()"> 
-    <label nz-radio nzValue="A">平&片</label>
+    <label nz-radio nzValue="A">平 & 片</label>
       <label nz-radio nzValue="Ping">平</label>
       <label nz-radio nzValue="Pian">片</label>
       <label nz-radio nzValue="luo">罗</label>
@@ -30,9 +30,9 @@
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,0)" 
   style="width: 55px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
   [style.margin-left] = "getMarginLeft(mb)" 
-  [style.border-color] = "mb.Selected? 'rgb(24,144,255)':'gray'" 
-  [style.background-color] = "mb.Selected? 'rgb(24,144,255)':'white'" 
-  [style.color] = "mb.Selected? 'white':'gray'" 
+
+  [class.activeKana] = "mb.Selected"
+  [class.unActiveKana] = "!mb.Selected"
   id = "{{mb.DisplayText}}"
   >
   {{getDisplayText(mb)}}<br>{{getRemindText(mb)}}
@@ -51,9 +51,8 @@
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,1)" 
   style="width: 55px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
   [style.margin-left] = "getMarginLeft(mb)" 
-  [style.border-color] = "mb.Selected? 'rgb(24,144,255)':'gray'" 
-  [style.background-color] = "mb.Selected? 'rgb(24,144,255)':'white'" 
-  [style.color] = "mb.Selected? 'white':'gray'" 
+  [class.activeKana] = "mb.Selected"
+  [class.unActiveKana] = "!mb.Selected"
   id = "{{mb.DisplayText}}"
   >
   {{getDisplayText(mb)}}<br>{{getRemindText(mb)}}
@@ -72,9 +71,8 @@
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,2)" 
   style="width: 85px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
   [style.margin-right] = "'12px'" 
-  [style.border-color] = "mb.Selected? 'rgb(24,144,255)':'gray'" 
-  [style.background-color] = "mb.Selected? 'rgb(24,144,255)':'white'" 
-  [style.color] = "mb.Selected? 'white':'gray'" 
+  [class.activeKana] = "mb.Selected"
+  [class.unActiveKana] = "!mb.Selected"
   id = "{{mb.DisplayText}}"
   >
   {{getDisplayText(mb)}}<br>{{getRemindText(mb)}}

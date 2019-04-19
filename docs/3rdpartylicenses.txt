@@ -1,6 +1,3 @@
-ng-zorro-antd
-MIT
-
 undefined
 
 ant-design-palettes
@@ -338,6 +335,9 @@ THE SOFTWARE.
 MIT
 
 @angular/animations
+MIT
+
+ng-zorro-antd
 MIT
 
 @angular/cdk/scrolling

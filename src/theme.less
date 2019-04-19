@@ -1,0 +1,54 @@
+// -------- 引入官方提供的 less 样式入口文件 -----------
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+
+// -------- 自定义参数覆盖 -----------
+//@primary-color: @red-6;
+// .darkbtn{
+//     background: #080808;
+//     border-color: #080808;
+// }
+// .darkbtn:hover{
+//     background: #000000;
+//     border-color: #000000;
+// }
+:root {
+  --primarcolor:#1890ff;
+}
+
+.ant-btn-primary{
+  background-color:var(--primarcolor);
+  border-color : var(--primarcolor)
+}
+
+.ant-btn-primary:focus,.ant-btn-primary:hover{
+  background-color:var(--primarcolor);
+  border-color : var(--primarcolor)
+}
+
+::selection {
+  color: #fff;
+  background: var(--primarcolor)
+}
+
+.ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner{
+  border-color: var(--primarcolor);
+}
+
+.ant-radio-checked .ant-radio-inner  {
+  border-color: var(--primarcolor);
+}
+
+
+.ant-radio-inner::after {
+  background: var(--primarcolor)
+}
+
+.ant-radio-checked::after{
+  border: 1px solid  var(--primarcolor);
+}
+
+
+.darkbackground{
+    background: #4a4a4a;
+    color: white;
+}
