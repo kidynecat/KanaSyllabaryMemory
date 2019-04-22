@@ -5,6 +5,10 @@
 可访问 [https://kidynecat.github.io/KanaSyllabaryMemory](https://kidynecat.github.io/KanaSyllabaryMemory) 直接使用
 
 ## 更新日志
+v1.3
+新增夜间护眼模式
+支持LocalStorage缓存设置
+
 v1.2.1
 修改随机的处理方式，现在随机在一轮内不会重复
 修改ico和title

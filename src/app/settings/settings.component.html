@@ -1,7 +1,7 @@
 <div id="divSetting" style="height:500px;position: relative;" #target>
 
   <div style="background-color:white;position: fixed;height: 60px;line-height: 60px;z-index: 9999;top:55px;width: 100%" >
-      <nz-radio-group [(ngModel)]="displayType" (ngModelChange)="ondisplayType()"> 
+      <nz-radio-group style="width:100%" [(ngModel)]="displayType" (ngModelChange)="ondisplayType()"> 
     <label nz-radio nzValue="A">平 & 片</label>
       <label nz-radio nzValue="Ping">平</label>
       <label nz-radio nzValue="Pian">片</label>
@@ -28,7 +28,6 @@
   <div style="clear:both;margin-bottom: 10px"></div>
 
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,0)" 
-  style="width: 55px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
   [style.margin-left] = "getMarginLeft(mb)" 
 
   [class.activeKana] = "mb.Selected"
@@ -49,7 +48,6 @@
   <div style="clear:both;margin-bottom: 10px"></div>
 
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,1)" 
-  style="width: 55px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
   [style.margin-left] = "getMarginLeft(mb)" 
   [class.activeKana] = "mb.Selected"
   [class.unActiveKana] = "!mb.Selected"
@@ -69,10 +67,9 @@
   <div style="clear:both;margin-bottom: 10px"></div>
 
   <div class="memoObjects" *ngFor="let mb of getFYTypeObjects(memoObjects,2)" 
-  style="width: 85px;float:left;text-align: center;line-height: 16px;border: 1px solid; border-radius: 5px;margin-left: 1px;margin-top: 1px;user-select:none; height:37px " 
+  style="width: 85px " 
   [style.margin-right] = "'12px'" 
-  [class.activeKana] = "mb.Selected"
-  [class.unActiveKana] = "!mb.Selected"
+  [ngClass]="{'memoObjects': true,'activeKana':mb.Selected,'unActiveKana':!mb.Selected}"
   id = "{{mb.DisplayText}}"
   >
   {{getDisplayText(mb)}}<br>{{getRemindText(mb)}}

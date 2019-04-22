@@ -11,8 +11,13 @@
 //     background: #000000;
 //     border-color: #000000;
 // }
+
+//按钮
 :root {
   --primarcolor:#1890ff;
+  --primarfontcolor:white;
+  --backcolor:white;
+  --textfontcolor:rgba(0, 0, 0, 0.65);
 }
 
 .ant-btn-primary{
@@ -30,6 +35,7 @@
   background: var(--primarcolor)
 }
 
+//radio
 .ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner{
   border-color: var(--primarcolor);
 }
@@ -46,6 +52,20 @@
 .ant-radio-checked::after{
   border: 1px solid  var(--primarcolor);
 }
+
+//drawer
+
+
+.ant-drawer-body ,.ant-drawer-header,.ant-drawer-title,.ant-radio-group
+,.ant-radio-wrapper{
+  color: var(--textfontcolor);
+  background-color: var(--backcolor)
+}
+
+.ant-drawer-close,.ant-drawer-close:focus,.ant-divider-inner-text{
+  color: var(--textfontcolor);
+}
+
 
 
 .darkbackground{

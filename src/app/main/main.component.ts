@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getRandomString } from 'selenium-webdriver/safari';
 import {MemoObject, MemoryData} from "../memory-data"
+import { LocalStorage} from "../local-storage"
 
 
 @Component({
@@ -18,7 +19,7 @@ export class MainComponent implements OnInit {
   constructor() { }
 
 
-  public isDark = false
+  
 
   public Data={
     id:"",
@@ -48,13 +49,39 @@ export class MainComponent implements OnInit {
 
   public IsStart = false
 
+  public isDark = false
+
 
 
 
   loadMdatas(){
     let md = new MemoryData()
-    this.Mdata = md.getJP50()
+
+    let sd = LocalStorage.load<Array<MemoObject>>('selectedData')
+    if(sd != null)
+    {
+      this.Mdata = sd
+    }
+    else
+    {
+      this.Mdata = md.getJP50()
+    }
     this.reflashDisplayData();
+
+    let dspt = LocalStorage.load<string>('displayType')
+    if(dspt != null)
+    {
+      this.DisplayType = dspt;
+    }
+    
+
+    let isdark = LocalStorage.load<boolean>('isDark')
+    if(isdark != null)
+    {
+      this.isDark = isdark;
+    }
+    this.changeColor()
+    
   }
 
   private reflashDisplayData() {
@@ -156,6 +183,13 @@ export class MainComponent implements OnInit {
   closeDrawer(){
     this.reflashDisplayData()
 
+
+    LocalStorage.save("selectedData",this.Mdata)
+    //Save localStorage
+    //var storage=window.localStorage;
+    LocalStorage.save("displayType",this.DisplayType)
+
+
     this.Data.drawerVisible = false
   }
 
@@ -174,17 +208,33 @@ export class MainComponent implements OnInit {
   colorPick(){
     if(!this.isDark)
     {
+
+      this.isDark = true
+    }
+    else
+    {
+
+      this.isDark = false
+    }
+    this.changeColor()
+    LocalStorage.save("isDark",this.isDark )
+  }
+
+  changeColor(){
+    if(this.isDark)
+    {
       document.body.className = "darkbackground"
       document.body.style.setProperty('--primarcolor', '#7B7B7B');
-      this.isDark = true
+      document.body.style.setProperty('--backcolor', '#4a4a4a');
+      document.body.style.setProperty('--textfontcolor', 'white');
     }
     else
     {
       document.body.className = ""
       document.body.style.setProperty('--primarcolor', '#1890ff');
-      this.isDark = false
+      document.body.style.setProperty('--backcolor', 'white');
+      document.body.style.setProperty('--textfontcolor', 'rgba(0, 0, 0, 0.65)');
     }
-    
   }
   
 }

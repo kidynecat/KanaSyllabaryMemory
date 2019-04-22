@@ -4,7 +4,7 @@
   <button nz-button  nzType="primary" nzShape="circle" (click)="openDrawer()"><i nz-icon type="setting" theme="outline" ></i></button>
 </div>
 <div style="margin: 12px 12px 0 0;float: right">
-  <button nz-button  nzType="primary" nzShape="circle" (click)="colorPick()"><i nz-icon nzType="skin" nzTheme="outline"></i></button>
+  <button nz-button  nzType="primary" nzShape="circle" (click)="colorPick()"><i nz-icon nzType="bulb" nzTheme="{{!isDark? 'fill':'outline'}}"></i></button>
 </div>
 <div style="margin: 12px 12px 0 0;float: right">
   <button nz-button  nzType="primary" nzShape="circle" (click)="goGitHub()"><i nz-icon nzType="github" nzTheme="outline"></i></button>

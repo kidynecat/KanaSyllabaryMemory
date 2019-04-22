@@ -120,7 +120,8 @@ export class SettingsComponent implements OnInit {
       //console.log('window touchstart' );
       let ele = document.elementFromPoint(evt.touches[0].clientX, evt.touches[0].clientY);
       //console.log(ele)
-      if (ele != null && ele.className == "memoObjects") {
+      
+      if (ele != null && ele.className != null && ele.className.indexOf != undefined && ele.className.indexOf("memoObjects") >=0 ) {
         this.mouseDownFlag = true
       }
     })
