@@ -1,7 +1,10 @@
 # KanaSyllabaryMemory
 ## 简介
 
-用于记忆五十音的卡片小程序  
+a sample static Website for learning Japanese kana  
+[visit website](https://kidynecat.github.io/KanaSyllabaryMemory)
+
+用于记忆五十音的卡片静态页面    
 可访问 [https://kidynecat.github.io/KanaSyllabaryMemory](https://kidynecat.github.io/KanaSyllabaryMemory) 直接使用
 
 ## 更新日志
