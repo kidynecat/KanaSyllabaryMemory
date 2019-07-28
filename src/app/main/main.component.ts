@@ -128,17 +128,17 @@ export class MainComponent implements OnInit {
       let r2 =Math.round(Rand2 * 1)
       //console.log(r2)
       tmpdisplay = (r2 == 1 ? this.DisplayMdata[num].DisplayText : this.DisplayMdata[num].DisplayText2)
-      tmpremind = this.DisplayMdata[num].Remind
+      tmpremind = `${this.DisplayMdata[num].ID} | ${this.DisplayMdata[num].DisplayText} | ${this.DisplayMdata[num].DisplayText2}`
     }
     else if(this.DisplayType == "Ping")
     {
       tmpdisplay = this.DisplayMdata[num].DisplayText
-      tmpremind = this.DisplayMdata[num].Remind
+      tmpremind = `${this.DisplayMdata[num].ID} | ${this.DisplayMdata[num].DisplayText} | ${this.DisplayMdata[num].DisplayText2}`
     }
     else if(this.DisplayType == "Pian")
     {
       tmpdisplay = this.DisplayMdata[num].DisplayText2
-      tmpremind = this.DisplayMdata[num].Remind
+      tmpremind = `${this.DisplayMdata[num].ID} | ${this.DisplayMdata[num].DisplayText} | ${this.DisplayMdata[num].DisplayText2}`
     }
     else if(this.DisplayType == "luo")
     {
