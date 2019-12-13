@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
 
   public IsStart = false
 
-  public isDark = false
+  public isDark = 0  // 0: light, 1: gray, 2: dark
 
 
 
@@ -75,7 +75,7 @@ export class MainComponent implements OnInit {
     }
     
 
-    let isdark = LocalStorage.load<boolean>('isDark')
+    let isdark = LocalStorage.load<number>('isDark')
     if(isdark != null)
     {
       this.isDark = isdark;
@@ -122,23 +122,23 @@ export class MainComponent implements OnInit {
 
     this.Data.id = this.DisplayMdata[num].ID
 
-    if(this.DisplayType == "A" )
+    if(this.DisplayType == "A")
     { 
       let Rand2 = Math.random();  
       let r2 =Math.round(Rand2 * 1)
       //console.log(r2)
       tmpdisplay = (r2 == 1 ? this.DisplayMdata[num].DisplayText : this.DisplayMdata[num].DisplayText2)
-      tmpremind = this.DisplayMdata[num].Remind
+      tmpremind = `${this.DisplayMdata[num].ID} | ${this.DisplayMdata[num].DisplayText} | ${this.DisplayMdata[num].DisplayText2}`
     }
     else if(this.DisplayType == "Ping")
     {
       tmpdisplay = this.DisplayMdata[num].DisplayText
-      tmpremind = this.DisplayMdata[num].Remind
+      tmpremind = `${this.DisplayMdata[num].ID} | ${this.DisplayMdata[num].DisplayText} | ${this.DisplayMdata[num].DisplayText2}`
     }
     else if(this.DisplayType == "Pian")
     {
       tmpdisplay = this.DisplayMdata[num].DisplayText2
-      tmpremind = this.DisplayMdata[num].Remind
+      tmpremind = `${this.DisplayMdata[num].ID} | ${this.DisplayMdata[num].DisplayText} | ${this.DisplayMdata[num].DisplayText2}`
     }
     else if(this.DisplayType == "luo")
     {
@@ -206,22 +206,31 @@ export class MainComponent implements OnInit {
   }
 
   colorPick(){
-    if(!this.isDark)
+    if(this.isDark == 0)
     {
-
-      this.isDark = true
+      this.isDark = 1
+    }
+    else if(this.isDark == 1)
+    {
+      this.isDark = 2
     }
     else
     {
-
-      this.isDark = false
+      this.isDark = 0
     }
     this.changeColor()
     LocalStorage.save("isDark",this.isDark )
   }
 
   changeColor(){
-    if(this.isDark)
+    if(this.isDark == 2) // dark
+    {
+      document.body.className = "deepdarkbackground"
+      document.body.style.setProperty('--primarcolor', '#444');
+      document.body.style.setProperty('--backcolor', 'black');
+      document.body.style.setProperty('--textfontcolor', '#d6d6d6');
+    }
+    else if(this.isDark == 1)  // gray
     {
       document.body.className = "darkbackground"
       document.body.style.setProperty('--primarcolor', '#7B7B7B');
