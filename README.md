@@ -1,7 +1,7 @@
 # KanaSyllabaryMemory
 ## 简介
 
-a sample static Website for learning Japanese kana  
+A sample static website for learning Japanese kana  
 [visit website](https://kidynecat.github.io/KanaSyllabaryMemory)
 
 用于记忆五十音的卡片静态页面    
